@@ -20,26 +20,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm ci
 
-      - name: Build package
-        run: npm run compile
-
-      - name: Build Package and Move to Test Directroy
+      - name: Build Package for Report
         run: |
+          npm ci
+          npm run compile
           npm pack
-          mv som30ind-cucumber-reporting-*.tgz ./test/lib/cucumber-reporting.tgz
+          mv som30ind-cucumber-reporting-*.tgz ./demo/lib/cucumber-reporting.tgz
 
       - name: Generate Report
-        working-directory: ./test
+        working-directory: ./demo
         run: |
           npm i
           npm run build:report
 
+      - name: Publish Page
       - uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           external_repository: som30ind/som30ind.github.io
           personal_token: ${{ secrets.GH_PAGES_UPLOAD }}
           publish_branch: master
-          publish_dir: ./test/report
+          publish_dir: ./demo/report
