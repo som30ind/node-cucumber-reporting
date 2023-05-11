@@ -1,0 +1,13 @@
+<% if (docString) { %>
+  <div class="inner-level">
+    <div class="docstring indention">
+      <% const docStringId = counter.next(); %>
+      <div data-toggle="collapse" class="collapsable-control" data-target="#msg-<%= docStringId %>">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-<%= docStringId %>" class="collapse collapsable-details">
+        <pre><%= docString.value %></pre>
+      </div>
+    </div>
+  </div>
+<% } %>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('/headers') %>
+  <%- include('/macros/page/title', {
+    reportName: 'Tags Overview'
+  }) %>
+
+  <script>
+  <%- include('/js/tags-chart.js.ejs') %>
+  </script>
+</head>
+<body>
+  <%- include('/macros/page/navigation', { active_tab: 'tags' }) %>
+  <%- include('/macros/page/reportInfo') %>
+  <%- include('/macros/page/lead', {
+    page_title: 'Tags Statistics',
+    page_description: 'The following graph shows passing and failing statistics for tags'
+  }) %>
+  <% if (Array.isArray(all_tags) && all_tags.length > 0) { %>
+  <div class="container-fluid" id="charts">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <canvas id="tags-chart" height="50"></canvas>
+      </div>
+    </div>
+  </div>
+  <% } %>
+
+<br/>
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% if (!Array.isArray(all_tags) || all_tags.length === 0) { %>
+        <p>You have no tags in your cucumber report</p>
+      <% } else { %>
+        <%- include('/macros/report/statsTable', {
+          table_key: 'Tag',
+          items: all_tags,
+          report_summary
+        }) %>
+      <% } %>
+    </div>
+  </div>
+</div>
+<%- include('/footer') %>
+</body>
+</html>

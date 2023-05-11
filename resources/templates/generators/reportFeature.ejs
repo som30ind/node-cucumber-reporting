@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('/headers') %>
+  <%- include('/macros/page/title', {
+    reportName: `Feature ${feature.getName()}`
+  }) %>
+</head>
+<body>
+  <%- include('/macros/page/navigation', { active_tab: '' }) %>
+  <%- include('/macros/page/reportInfo') %>
+  <%- include('/macros/page/lead', {
+    page_title: 'Feature Report',
+    page_description: undefined
+  }) %>
+
+<%- include('/macros/report/reportTable', {
+  table_key: 'Feature',
+  reportable: feature
+}) %>
+<%- include('/macros/report/expandAllButtons') %>
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="feature">
+        <%- include('/macros/json/tags', {
+          tags: feature.tags
+        }) %>
+        <%- include('/macros/json/brief', {
+          keyword: feature.keyword,
+          status: feature.getStatus(),
+          keyword_value: feature.getName(),
+          expandable: true,
+          result: undefined
+        }) %>
+        <div class="description indention"><%= feature.description %></div>
+
+        <div class="elements inner-level">
+          <% feature.elements.forEach((element, i) => { %>
+            <%- include('/macros/json/element', {
+              element,
+              linkToFeature: false,
+              index: i
+            }) %>
+          <% }); %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('/macros/report/expandAllButtons') %>
+<br/>
+<%- include('/footer') %>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<div class="tags indention">
+  <% if (Array.isArray(tags) && tags.length > 0) { %>
+    <b>Tags:</b>
+    <% tags.forEach(tag => { %>
+      <a href="<%= tag.fileName %>"><%= tag.name %></a>
+    <% }) %>
+  <% } %>
+</div>

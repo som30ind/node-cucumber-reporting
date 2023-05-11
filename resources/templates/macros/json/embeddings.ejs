@@ -1,0 +1,124 @@
+<% if (Array.isArray(embeddings) && embeddings.length > 0) { %>
+<div class="embeddings inner-level">
+  <%
+    embeddings.forEach((embedding, i) => {
+      switch (embedding.mimeType) {
+        case 'image/png': {
+          %> <%- include('/macros/json/imageEmbedding', {
+            embedding,
+            image_type: 'png', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'image/gif': {
+          %> <%- include('/macros/json/imageEmbedding', {
+            embedding,
+            image_type: 'gif', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'image/bmp': {
+          %> <%- include('/macros/json/imageEmbedding', {
+            embedding,
+            image_type: 'bmp', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'image/jpeg': {
+          %> <%- include('/macros/json/imageEmbedding', {
+            embedding,
+            image_type: 'jpeg', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'image/svg+xml': {
+          %> <%- include('/macros/json/imageEmbedding', {
+            embedding,
+            image_type: 'svg', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'text/xml': {
+          %> <%- include('/macros/json/textEmbedding', {
+            embedding,
+            format: 'XML text', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'text/plain': {
+          %> <%- include('/macros/json/textEmbedding', {
+            embedding,
+            format: 'Plain text', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'text/html': {
+          %> <%- include('/macros/json/htmlEmbedding', {
+            embedding,
+            format: 'HTML', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'text/csv': {
+          %> <%- include('/macros/json/textEmbedding', {
+            embedding,
+            format: 'CSV', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'application/json': {
+          %> <%- include('/macros/json/textEmbedding', {
+            embedding,
+            format: 'JSON', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'image/url': {
+          %> <%- include('/macros/json/imageReferenceEmbedding', {
+            embedding,
+            index: i
+          }) %> <%
+          break;
+        }
+
+        case 'video/mp4': {
+          %> <%- include('/macros/json/videoEmbedding', {
+            embedding,
+            format: 'mp4', 
+            index: i
+          }) %> <%
+          break;
+        }
+
+        default: {
+          %> <%- include('/macros/json/unknownEmbedding', {
+            embedding,
+            index: i
+          }) %> <%
+          break;
+        }
+      }
+    });
+  %>
+</div>
+<% } %>

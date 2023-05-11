@@ -1,0 +1,20 @@
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <% if (build_number) { %>
+        <th>Number</th>
+      <% } %>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td><%= build_project_name %></td>
+      <% if (build_number) { %>
+        <td><%= build_number %></td>
+      <% } %>
+      <td><%= build_time %></td>
+    </tr>
+  </tbody>
+</table>

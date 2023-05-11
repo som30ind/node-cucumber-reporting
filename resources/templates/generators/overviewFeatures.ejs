@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('/headers') %>
+  <%- include('/macros/page/title', {
+    reportName: 'Features Overview'
+  }) %>
+
+  <script>
+    <%- include('/js/steps-chart.js.ejs') %>
+    <%- include('/js/scenarios-chart.js.ejs') %>
+    <%- include('/js/features-chart.js.ejs') %>
+  </script>
+</head>
+
+<body>
+<%- include('/macros/page/navigation', {
+  active_tab: 'features'
+}) %>
+<%- include('/macros/page/reportInfo') %>
+<%- include('/macros/page/lead', {
+  page_title: 'Features Statistics',
+  page_description: 'The following graphs show passing and failing statistics for features'
+}) %>
+
+<% if (Array.isArray(all_features) && all_features.length > 0) { %>
+  <div class="container-fluid" id="charts">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div id="featureChartCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#featureChartCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#featureChartCarousel" data-slide-to="1"></li>
+            <li data-target="#featureChartCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <canvas id="features-chart" height="120"></canvas>
+            </div>
+
+            <div class="item">
+              <canvas id="scenarios-chart" height="120"></canvas>
+            </div>
+
+            <div class="item">
+              <canvas id="steps-chart" height="120"></canvas>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#featureChartCarousel" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#featureChartCarousel" role="button" data-slide="next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+<% } %>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%- include('/macros/report/statsTable', {
+        table_key: 'Feature',
+        items: all_features,
+        report_summary
+      }) %>
+    </div>
+  </div>
+</div>
+<%- include('/footer') %>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<table class="table table-bordered" id="classifications">
+  <tbody>
+    <% Object.keys(classifications).forEach(key => {
+      const sanitizeValue = classifications[key];
+      %>
+      <tr class="info">
+        <th><%= key %></th>
+        <td><%= sanitizeValue %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>

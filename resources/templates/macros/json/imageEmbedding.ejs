@@ -1,0 +1,14 @@
+<div class="embedding indention">
+  <% const embeddingId = counter.next(); %>
+  <div data-toggle="collapse" data-target="#embedding-<%= embeddingId %>" class="collapsable-control">
+    <a><%= embedding.name ? embedding.name : `Attachment ${index + 1} (${image_type})` %></a>
+    <a href="embeddings/<%= embedding.fileName %>" download target="_blank">
+      <span class="download-button glyphicon glyphicon-download-alt"></span>
+    </a>
+  </div>
+  <div id="embedding-<%= embeddingId %>" class="collapse collapsable-details<%= expand_all_steps ? ' in' : '' %>">
+    <div class="embedding-content">
+      <img src="embeddings/<%= embedding.fileName %>">
+    </div>
+  </div>
+</div>

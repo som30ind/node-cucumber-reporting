@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+    <%- include('/macros/page/buildinfo') %>
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+    <% if (locals.classifications) { %>
+      <%- include('/macros/page/classifications') %>
+    <% } %>
+  </div>
+</div>

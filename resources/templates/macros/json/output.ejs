@@ -1,0 +1,24 @@
+<% if (Array.isArray(outputs) && outputs.length > 0) { %>
+  <div class="outputs inner-level">
+    <%
+    outputs.forEach((output, i) => {
+      const outputId = counter.next();
+      const index = i + 1;
+      %>
+      <div class="output indention">
+        <div data-toggle="collapse" class="<%= (isPassed && !expand_all_steps) ? 'collapsed ' : '' %>collapsable-control" data-target="#output-<%= outputId %>">
+          Output <%= index %>
+          <i class="chevron fa fa-fw"></i>
+        </div>
+        <div id="output-<%= outputId %>" class="collapse collapsable-details<%= (!isPassed || expand_all_steps) ? ' in' : '' %>"<%= (!isPassed || expand_all_steps) ? ' aria-expanded="true"' : '' %>>
+          <%#
+          **
+           * DO NOT format the line below. Whitespace nodes are significant in a pre-block.
+           *
+           %>
+          <pre><% for (const message of output.messages) { %><p><%= message %></p><% } %></pre>
+        </div>
+      </div>
+      <% }); %>
+  </div>
+<% } %>

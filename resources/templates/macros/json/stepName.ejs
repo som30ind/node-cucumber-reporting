@@ -1,0 +1,12 @@
+<%
+const noEscapeStepName = stepNameFormatter.format(name, args, `<span class="argument">`, `</span>`);
+const stepNameClass = `step-name-${keyword}`;
+%>
+
+<div class="brief <%= stepNameClass %> <%= status.rawName %>">
+  <span class="keyword indention"><%= keyword %></span>
+  <span class="name"><%- noEscapeStepName %></span>
+  <%- include('/macros/json/duration', {
+    durationable: result
+  }) %>
+</div>

@@ -1,0 +1,73 @@
+<div class="steps inner-level">
+  <% const stepsId = counter.next(); %>
+  <div data-toggle="collapse" class="<%= element.getStatus().isPassed ? 'collapsed ' : '' %>collapsable-control" data-target="#steps-<%= stepsId %>">
+    <%- include('/macros/json/brief', {
+      keyword: 'Steps',
+      status: element.getStepsStatus(),
+      keyword_value: '',
+      expandable: true,
+      result: locals.result
+    }) %>
+  </div>
+
+  <div id="steps-<%= stepsId %>" class="inner-level collapse collapsable-details<%= (!element.getStatus().isPassed || expand_all_steps) ? ' in' : '' %>">
+    <% element.steps.forEach((step, i) => { %>
+      <div class="step">
+        <% step.comments.forEach(comment => { %>
+          <div class="comment indention"><%= comment %></div>
+        <% }); %>
+        <%- include('/macros/json/stepName', {
+          keyword: step.keyword,
+          name: step.name,
+          args: step.getMatch().args,
+          status: step.result.status,
+          result: step.result
+        }) %>
+        <% const isPassed = step.getResult().status.isPassed %>
+        <%- include('/macros/json/hooks', {
+          keyword: 'Before',
+          hooks: step.before,
+          status: step.beforeStatus,
+          level: 'step',
+          index: i
+        }) %>
+          <%- include('/macros/json/message', {
+            messageName: step.getResult().errorMessageTitle,
+            message: step.getResult().errorMessage,
+            isPassed,
+            index: i,
+          }) %>
+
+        <% if (Array.isArray(step.rows) && step.rows.length > 0) { %>
+          <table class="step-arguments">
+            <% step.rows.forEach(row => { %>
+              <tr>
+                <% row.cells.forEach(cell => { %>
+                  <td><%= cell %></td>
+                <% }) %>
+              </tr>
+              <% }) %>
+          </table>
+        <% } %>
+        <%- include('/macros/json/docstring', {
+          docString: step.docString,
+          index: i
+        }) %>
+        <%- include('/macros/json/output', {
+          outputs: step.getOutputs(),
+          isPassed,
+          }) %>
+        <%- include('/macros/json/embeddings', {
+          embeddings: step.embeddings,
+        }) %>
+        <%- include('/macros/json/hooks', {
+          keyword: 'After',
+          hooks: step.after,
+          status: step.afterStatus,
+          level: 'step',
+          index: i
+        }) %>
+      </div>
+    <% }); %>
+  </div>
+</div>

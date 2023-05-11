@@ -1,0 +1,28 @@
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table class="stats-table">
+        <%- include('/macros/report/reportHeader', { table_key }) %>
+        <tbody>
+        <tr>
+          <td class="tagname"><%= reportable.getName() %></td>
+          <td <%= reportable.getPassedSteps() !== 0 ? 'class="passed"': '' %>><%= reportable.getPassedSteps() %></td>
+          <td <%= reportable.getFailedSteps() !== 0 ? 'class="failed"': '' %>><%= reportable.getFailedSteps() %></td>
+          <td <%= reportable.getSkippedSteps() !== 0 ? 'class="skipped"': '' %>><%= reportable.getSkippedSteps() %></td>
+          <td <%= reportable.getPendingSteps() !== 0 ? 'class="pending"': '' %>><%= reportable.getPendingSteps() %></td>
+          <td <%= reportable.getUndefinedSteps() !== 0 ? 'class="undefined"': '' %>><%= reportable.getUndefinedSteps() %></td>
+          <td class="total"><%= reportable.getSteps() %></td>
+
+          <td <%= reportable.getPassedScenarios() !== 0 ? 'class="passed"': '' %>><%= reportable.getPassedScenarios() %></td>
+          <td <%= reportable.getFailedScenarios() !== 0 ? 'class="failed"': '' %>><%= reportable.getFailedScenarios() %></td>
+          <td class="total"><%= reportable.getScenarios() %></td>
+
+          <td class="duration" data-value="<%= reportable.getDuration() %>"><%= reportable.getFormattedDuration() %></td>
+          <td class="<%= reportable.getStatus().rawName %>"><%= reportable.getStatus().label %></td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

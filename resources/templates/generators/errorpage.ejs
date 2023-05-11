@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('/headers') %>
+  <%- include('/macros/page/title', {
+    reportName: 'Error Page'
+  }) %>
+  <style>
+  .error-message {
+    color:red;
+    font-weight: bold;
+    background-color: lightpink;
+    font-family: monospace;
+  }
+  </style>
+</head>
+
+<body>
+  <%- include('/macros/page/navigation', {
+    active_tab: ''
+  }) %>
+  <%- include('/macros/page/reportInfo') %>
+  <%- include('/macros/page/lead', {
+    page_title: 'Error',
+    page_description: `Something went wrong with project ${build_project_name}, build ${build_number}`
+  }) %>
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="message">
+        <pre>$output_message</pre>
+      </div>
+      <div>Trying to generate report from following files. Make sure they are valid cucumber report files:</div>
+      <div class="error-files">
+        <pre>
+          <% for(const file of json_files) { %>
+            <%= file %>
+          <% } %>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('/footer') %>
+</body>
+</html>

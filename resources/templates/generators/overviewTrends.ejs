@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('/headers') %>
+  <%- include('/macros/page/title', {
+    reportName: 'Trends Overview'
+  }) %>
+
+  <script>
+    <%- include('/js/trends-chart.js.ejs', {
+      buildNumbers: build_number,
+      failedFeatures,
+      passedFeatures,
+      failedScenarios,
+      passedScenarios,
+      passedSteps,
+      failedSteps,
+      skippedSteps,
+      pendingSteps,
+      undefinedSteps,
+      durations,
+    }) %>
+  </script>
+</head>
+<body>
+  <%- include('/macros/page/navigation', { active_tab: 'trends' }) %>
+  <%- include('/macros/page/reportInfo') %>
+  <%- include('/macros/page/lead', {
+    page_title: 'Trends Statistics',
+    page_description: 'The following graph shows features, scenarios and steps for a period of time.'
+  }) %>
+
+<div class="container-fluid" id="charts">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h4>Features:</h4>
+      <canvas id="trends-features-chart" height="50"></canvas>
+      <br/>
+
+      <h4>Scenarios:</h4>
+      <canvas id="trends-scenarios-chart" height="50"></canvas>
+      <br/>
+
+      <h4>Steps:</h4>
+      <canvas id="trends-steps-chart" height="50"></canvas>
+      <br/>
+
+      <h4>Durations:</h4>
+      <canvas id="trends-durations-chart" height="50"></canvas>
+    </div>
+  </div>
+</div>
+<br/>
+<%- include('/footer') %>
+</body>
+</html>

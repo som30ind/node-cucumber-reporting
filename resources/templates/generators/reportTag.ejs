@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('/headers') %>
+  <%- include('/macros/page/title', {
+    reportName: `Tag: ${tag.getName()}`
+  }) %>
+</head>
+<body>
+  <%- include('/macros/page/navigation', {
+    active_tab: ''
+  }) %>
+  <%- include('/macros/page/reportInfo') %>
+  <%- include('/macros/page/lead', {
+    page_title: 'Tag Report',
+    page_description: ''
+  }) %>
+<%- include('/macros/report/reportTable', {
+  table_key: 'Tag',
+  reportable: tag
+}) %>
+<%- include('/macros/report/expandAllButtons') %>
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="elements">
+        <% tag.elements.forEach((element, i) => { %>
+          <%- include('/macros/json/element', {
+            element,
+            linkToFeature: true,
+            index: i
+          }) %>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('/macros/report/expandAllButtons') %>
+<br/>
+<%- include('/footer') %>
+</body>
+</html>

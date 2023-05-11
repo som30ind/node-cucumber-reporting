@@ -1,0 +1,8 @@
+{
+  "BaseUrl_QA": {
+    "Internal": "https://internal.test.com",
+  },
+  "BaseUrl_QA": {
+    "External": "https://external.test.com"
+  }
+}

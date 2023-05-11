@@ -1,0 +1,47 @@
+<div class="element">
+  <% if (linkToFeature) { %>
+    <div class="indention">
+      <b>Feature:</b>
+      <a href="<%= element.getFeature().reportFileName %>"><%= element.getFeature().name %></a>
+    </div>
+  <% } %>
+  <%- include('/macros/json/tags', {
+    tags: element.tags
+  }) %>
+  <%- include('/macros/json/duration', {
+    durationable: element
+  }) %>
+
+  <% const elementId = counter.next() %>
+  <span data-toggle="collapse" class="<%= element.getStatus().isPassed ? 'collapsed ' : '' %>collapsable-control" data-target="#element-<%= elementId %>">
+  <%- include('/macros/json/brief', {
+    keyword: element.keyword,
+    status: element.getStatus(),
+    keyword_value: element.name,
+    expandable: true,
+    result: locals.result
+  }) %>
+  </span>
+  <div class="description indention"><%= element.description %></div>
+
+  <div id="element-<%= elementId %>" class="collapse collapsable-details<%= (!element.getStatus().isPassed || expand_all_steps) ? ' in' : '' %>">
+    <%- include('/macros/json/hooks', {
+      keyword: 'Before',
+      hooks: element.before,
+      status: element.beforeStatus,
+      level: 'element',
+      index
+    }) %>
+    <%- include('/macros/json/steps', {
+      steps: element.steps,
+      index
+    }) %>
+    <%- include('/macros/json/hooks', {
+      keyword: 'After',
+      hooks: element.after,
+      status: element.afterStatus,
+      level: 'element',
+      index
+    }) %>
+  </div>
+</div>

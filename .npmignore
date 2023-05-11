@@ -1,0 +1,15 @@
+/src
+/test-resources
+/package-lock.json
+/html
+/report-html
+/.vscode
+/embeddings
+/libs
+/scripts
+/render.js
+/render2.js
+/tsconfig.json
+/tsconfig.*.json
+/embeding.json
+/*.tgz

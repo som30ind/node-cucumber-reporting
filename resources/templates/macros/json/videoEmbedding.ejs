@@ -1,0 +1,17 @@
+<div class="embedding indention">
+  <% const embeddingId = counter.next(); %>
+  <div data-toggle="collapse" data-target="#embedding-<%= embeddingId %>" class="collapsable-control">
+    <a><%= embedding.name ? embedding.name : `Attachment ${index + 1} (${format})` %></a>
+    <a href="embeddings/<%= embedding.fileName %>" download target="_blank">
+      <span class="download-button glyphicon glyphicon-download-alt"></span>
+    </a>
+  </div>
+  <div id="embedding-<%= embeddingId %>" class="collapse collapsable-details<%= expand_all_steps ? ' in' : '' %>">
+    <div class="embedding-content">
+      <video width="854" height="480" controls>
+        <source src="embeddings/<%= embedding.fileName %>" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>

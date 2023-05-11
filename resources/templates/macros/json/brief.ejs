@@ -1,0 +1,10 @@
+<div class="brief <%= status.rawName %>">
+  <span class="keyword indention"><%= keyword %></span>
+  <span class="name"><%= keyword_value %></span>
+  <%- include('/macros/json/duration', {
+    durationable: result
+  }) %>
+  <% if (expandable) { %>
+     <i class="chevron fa fa-fw"></i>
+  <% } %>
+</div>
