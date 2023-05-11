@@ -17,11 +17,6 @@ export class UserConfigurationResources {
   }
 }
 
-export interface ConfigurationTrends {
-  readonly file?: string;
-  readonly limit?: number;
-}
-
 export abstract class UserConfiguration {
   public readonly reportDir: string;
   public readonly buildNumber: string;
@@ -33,10 +28,8 @@ export abstract class UserConfiguration {
   public readonly sortingMethod: SortingMethod;
   public readonly presentationModes: PresentationMode[];
   public readonly projectName: string;
-  public readonly customJsFiles: string[];
-  public readonly customCssFiles: string[];
   public readonly classifications: Record<string, string>;
-  public trends: ConfigurationTrends;
+  public trendsFile?: string;
 
   constructor(
     userConfig?: Partial<UserConfiguration>
@@ -55,10 +48,8 @@ export abstract class UserConfiguration {
     this.sortingMethod = userConfig.sortingMethod ?? 'NATURAL';
     this.presentationModes = userConfig.presentationModes ?? [];
     this.projectName = userConfig.projectName ?? 'Cucumber Project';
-    this.customJsFiles = userConfig.customJsFiles ?? [];
-    this.customCssFiles = userConfig.customCssFiles ?? [];
     this.classifications = userConfig.classifications ?? {};
-    this.trends = userConfig.trends ?? {};
+    this.trendsFile = userConfig.trendsFile;
   }
 }
 
@@ -78,6 +69,7 @@ export class Configuration extends UserConfiguration {
   public static readonly FILE_EXTENSION_PATTERN = /[a-z0-9]+$/;
   public static readonly UNKNOWN_FILE_EXTENSION = 'unknown';
   public readonly resources: ConfigurationResources;
+  private pTrendsLimit: number = 0;
 
   constructor(
     userConfig?: Partial<UserConfiguration>
@@ -87,29 +79,24 @@ export class Configuration extends UserConfiguration {
   }
 
   public get isTrendsAvailable() {
-    return (this.trends.limit ?? -1) > -1 && this.isTrendsStatsFile;
+    return (this.pTrendsLimit ?? -1) > -1 && this.isTrendsStatsFile;
   }
 
   public get isTrendsStatsFile() {
-    return !!this.trends.file;
+    return !!this.trendsFile;
   }
 
   public get trendsLimit() {
-    return this.trends.limit ?? 0;
+    return this.pTrendsLimit ?? 0;
   }
 
   public setTrends(file: string, limit: number): void {
-    this.trends = {
-      file,
-      limit
-    };
+    this.trendsFile = file;
+    this.pTrendsLimit = limit;
   }
 
   public setTrendsStatsFile(file: string): void {
-    this.trends = {
-      file,
-      limit: 0
-    };
+    this.setTrends(file, 0);
   }
 
   public containsPresentationMode(mode: PresentationMode): boolean {

@@ -77,8 +77,8 @@ export abstract class AbstractPage {
     this.context.trends_available = this.configuration.isTrendsAvailable;
     this.context.build_project_name = this.configuration.projectName;
     this.context.build_number = this.configuration.buildNumber;
-    this.context.js_files = this.configuration.customJsFiles.map(jsf => basename(jsf));
-    this.context.css_files = this.configuration.customCssFiles.map(cssf => basename(cssf));
+    this.context.js_files = this.configuration.resources.customJsFiles.map(jsf => basename(jsf));
+    this.context.css_files = this.configuration.resources.customCssFiles.map(cssf => basename(cssf));
 
     // if report generation fails then report is null
     const formattedTime = this.reportResult != null ? this.reportResult.getBuildTime() : ReportResult.getCurrentTime();

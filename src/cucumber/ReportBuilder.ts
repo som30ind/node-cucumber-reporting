@@ -36,7 +36,7 @@ export class ReportBuilder {
 
   constructor(
     private jsonFiles: string[],
-    userConfigs: Partial<UserConfiguration>
+    userConfigs?: Partial<UserConfiguration>
   ) {
     this.configuration = new Configuration(userConfigs);
     this.reportParser = new ReportParser(this.configuration);
@@ -170,15 +170,15 @@ export class ReportBuilder {
     }
 
     // save updated trends so it contains history only for the last builds
-    if (this.configuration.trends.file) {
-      this.saveTrends(trends, this.configuration.trends.file);
+    if (this.configuration.trendsFile) {
+      this.saveTrends(trends, this.configuration.trendsFile);
     }
 
     return trends;
   }
 
   private loadOrCreateTrends(): Trends {
-    const trendsFile = this.configuration.trends.file;
+    const trendsFile = this.configuration.trendsFile;
 
     if (trendsFile && existsSync(trendsFile)) {
       return ReportBuilder.loadTrends(trendsFile);

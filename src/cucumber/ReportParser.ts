@@ -96,8 +96,10 @@ export class ReportParser {
     }
   }
 
-  private processClassificationFile(file: string): void {
-    const config = readJsonSync(file);
-    Helper.mergeDeep(this.configuration.classifications, config);
+  private processClassificationFile(fileExpr: string): void {
+    globSync(fileExpr).forEach(file => {
+      const config = readJsonSync(file);
+      Helper.mergeDeep(this.configuration.classifications, config);
+    });
   }
 }
