@@ -1,23 +1,24 @@
+[![Build and Publish Node.js Package](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/publish.yml/badge.svg)](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/publish.yml)
 [![Live Demo](https://img.shields.io/badge/Online%20demo-published-blue.svg)](https://som30ind.github.io/cucumber-report-html/overview-features.html)
-[![Vulnerabilities](https://snyk.io/test/github/som30ind/node-cucumber-reporting/badge.svg)](https://snyk.io/org/damianszczepanik/project/6a2fe301-d56c-49e7-8c78-cd3ff09c3828)
+[![Vulnerabilities](https://snyk.io/test/github/som30ind/node-cucumber-reporting/badge.svg)](https://snyk.io/org/som30ind/project/187055d6-fe31-4c65-98c2-c53ffc3e3293)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/som30ind/node-cucumber-reporting/master/LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/som30ind/node-cucumber-reporting.svg)](https://github.com/som30ind/node-cucumber-reporting/graphs/contributors)
 
-# Publish pretty [cucumber](https://cucumber.io/) reports
+# Node.js Cucumber Reporting
 
-This is a Node.js report publisher primarily created to publish cucumber reports on the Jenkins build server.
-It publishes pretty html reports with charts showing the results of cucumber runs. It has been split out into a standalone package so it can be used for Jenkins and Node.js command line as well as any other packaging that might be useful. Generated report has no dependency so can be viewed offline. This package is inspired by the [Maven Cucumber Reporting Project](https://github.com/damianszczepanik/cucumber-reporting).
+This is a Node.js report publisher primarily created to publish [cucumber](https://cucumber.io/) reports on the Jenkins build server.
+It publishes pretty html reports with charts showing the results of [cucumber](https://cucumber.io/) runs. It has been split out into a standalone package so it can be used for Jenkins and Node.js command line as well as any other packaging that might be useful. Generated report has no dependency so can be viewed offline. This package is inspired from the [Maven Cucumber Reporting Project](https://github.com/som30ind/node-cucumber-reporting).
 
 ## Background
 
 Cucumber is a test automation tool following the principles of Behavioural Driven Design and living documentation. Specifications are written in a concise human readable form and executed in continuous integration.
 
-This project allows you to publish the results of a cucumber run as pretty html reports. In order for this to work you must generate a cucumber json report. The project converts the json report into an overview html linking to separate feature files with stats and results.
+This project allows you to publish the results of a [cucumber](https://cucumber.io/) run as pretty html reports. In order for this to work you must generate a [cucumber](https://cucumber.io/) json report. The project converts the json report into an overview html linking to separate feature files with stats and results.
 
 ## Install
 Install NPM dependency
 ```sh
-npm i @som30ind/node-cucumber-reporting --save
+npm i @som30ind/cucumber-reporting --save
 ```
 
 ## Usage
