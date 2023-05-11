@@ -13,3 +13,5 @@
 /tsconfig.*.json
 /embeding.json
 /*.tgz
+/.github
+/test
