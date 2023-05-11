@@ -1,0 +1,15 @@
+{
+  "name": "@som30ind/cucumber-report-gen",
+  "version": "1.0.0",
+  "description": "For Generate and Publish Github Page",
+  "scripts": {
+    "build:report": "node generate-report.js"
+  },
+  "dependencies": {
+    "@som30ind/cucumber-reporting": "file:lib/cucumber-reporting.tgz"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Somnath Sinha",
+  "license": "MIT"
+}
