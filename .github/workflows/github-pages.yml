@@ -6,6 +6,13 @@ on:
       - master # upload demo report only from main branch
 
 jobs:
+name: Publish Demo
+
+on:
+  tags:
+    - v1*
+
+jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
