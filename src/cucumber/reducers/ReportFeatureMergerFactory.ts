@@ -18,7 +18,6 @@ export class ReportFeatureMergerFactory {
     const methods = Array.isArray(reducingMethods) ? reducingMethods : [];
 
     return this.mergers
-      .filter(m => m.test(methods))
-      .at(0) ?? new ReportFeatureAppendableMerger();
+      .filter(m => m.test(methods))[0] ?? new ReportFeatureAppendableMerger();
   }
 }
