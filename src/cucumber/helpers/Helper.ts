@@ -25,15 +25,15 @@ export class Helper {
   //   fractionalSecondDigits: 3,
   // });
 
-  public static stringToUnion<R>(allowedOptions: readonly R[], option: string | undefined, defaultOption: R): R {
-    const selectedOption: R | undefined = allowedOptions.find(opt => opt === option);
+  // public static stringToUnion<R>(allowedOptions: readonly R[], option: string | undefined, defaultOption: R): R {
+  //   const selectedOption: R | undefined = allowedOptions.find(opt => opt === option);
 
-    if (selectedOption === undefined) {
-      return defaultOption;
-    }
+  //   if (selectedOption === undefined) {
+  //     return defaultOption;
+  //   }
 
-    return selectedOption;
-  }
+  //   return selectedOption;
+  // }
 
   public static mapJsonArray<U, T>(configuration: Configuration, jsonData: U[] | undefined, mappingFunction: (configuration: Configuration, el: U) => T): T[] {
     if (!Array.isArray(jsonData)) {
@@ -101,13 +101,13 @@ export class Helper {
     });
   }
 
-  public static mergeConfigs(defaultConfig: Configuration, userConfig: Partial<UserConfiguration>): Configuration {
-    const mergedConfig = cloneDeep(defaultConfig);
+  // public static mergeConfigs(defaultConfig: Configuration, userConfig: Partial<UserConfiguration>): Configuration {
+  //   const mergedConfig = cloneDeep(defaultConfig);
 
-    Helper.mergeDeep(mergedConfig, userConfig);
+  //   Helper.mergeDeep(mergedConfig, userConfig);
 
-    return mergedConfig;
-  }
+  //   return mergedConfig;
+  // }
 
   public static equalsIgnoreCase(a: string | undefined, b: string | undefined): boolean {
     return (a ?? '').toUpperCase() === (b ?? '').toUpperCase();

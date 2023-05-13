@@ -1,19 +1,19 @@
 export type DurationSpecKeys = 'ms' | 'secs' | 'mins' | 'hrs' | 'days';
 
 export interface DurationFormatOptions {
-  separators?: Record<DurationSpecKeys, string>;
+  separators?: Partial<Record<DurationSpecKeys, string>>;
   includeZero?: boolean;
   hideUnits?: DurationSpecKeys[];
-  digits?: Record<DurationSpecKeys, number>;
 }
 
 export interface DurationConvertOptions {
   includeZero?: boolean;
 }
 
-export type Duration = Record<DurationSpecKeys, number>;
+export type Duration = Partial<Record<DurationSpecKeys, number>>;
 
 export interface DurationFormatSpecs {
+  factor: number;
   value: number;
   separator: string;
   digits?: number;
