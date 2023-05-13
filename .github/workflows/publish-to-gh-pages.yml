@@ -1,4 +1,4 @@
-name: Publish Demo
+name: Publish Demo to Github Pages
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - v1*
 
 jobs:
-  build:
+  build_and_publish_to_gh:
     runs-on: ubuntu-latest
     strategy:
       matrix:
