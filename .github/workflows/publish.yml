@@ -1,8 +1,9 @@
 name: Build and Publish Node.js Package
 
 on:
-  tags:
-    - v1*
+  push:
+    tags:
+      - v1*
 
 jobs:
   build_and_publish:

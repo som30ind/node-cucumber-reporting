@@ -9,8 +9,9 @@ jobs:
 name: Publish Demo
 
 on:
-  tags:
-    - v1*
+  push:
+    tags:
+      - v1*
 
 jobs:
   build:
