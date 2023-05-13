@@ -1,6 +1,9 @@
-[![Build and Publish Node.js Package](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/publish.yml/badge.svg)](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/publish.yml)
+[![Build and Publish Package](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/npm-publish.yml)
+[![Build & Publish Demo](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/build-demo.yml/badge.svg)](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/build-demo.yml)
 [![Live Demo](https://img.shields.io/badge/Online%20demo-published-blue.svg)](https://som30ind.github.io/cucumber-report-html/overview-features.html)
+[![Code Coverage](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/codecov.yml/badge.svg)](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/codecov.yml)
 [![Vulnerabilities](https://snyk.io/test/github/som30ind/node-cucumber-reporting/badge.svg)](https://snyk.io/org/som30ind/project/187055d6-fe31-4c65-98c2-c53ffc3e3293)
+[![CodeQL](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/som30ind/node-cucumber-reporting/actions/workflows/github-code-scanning/codeql)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/som30ind/node-cucumber-reporting/master/LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/som30ind/node-cucumber-reporting.svg)](https://github.com/som30ind/node-cucumber-reporting/graphs/contributors)
 
