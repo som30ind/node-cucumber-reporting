@@ -14,3 +14,15 @@ export function toNanoSecond(days: number, hours: number, mins: number, secs: nu
   return (days * DUR_SPECS.days) + (hours * DUR_SPECS.hrs) + (mins * DUR_SPECS.mins)
     + (secs * DUR_SPECS.secs) + (milli * DUR_SPECS.ms) + (micro * DUR_SPECS.mcr) + (nano * DUR_SPECS.ns);
 }
+
+export function handleException<CR, R extends Error>(callBack: () => CR): R | undefined {
+  try {
+    callBack();
+  } catch (e: unknown) {
+    return e as R | undefined;
+  }
+}
+
+export function genStrArray(prefix: string, colCount: number): string[] {
+  return Array(colCount).fill(1).map((_, i) => `${prefix}-${i}`);
+}

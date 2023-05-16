@@ -33,7 +33,7 @@ export class TagObject implements Reportable {
   public addElement(element: MElement): boolean {
     this.pElements.push(element);
 
-    if (!this.status.isPassed && !element.getStatus().isPassed) {
+    if (this.status.value !== 'FAILED' && element.getStatus().value !== 'PASSED') {
       this.status = new ReportStatus('FAILED');
     }
 

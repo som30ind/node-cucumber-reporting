@@ -14,10 +14,10 @@ export class MElement implements IElementable {
   private static readonly SCENARIO_TYPE = 'scenario';
   private static readonly BACKGROUND_TYPE = 'background';
 
-  private elementStatus!: ReportStatus;
-  private beforeStatus!: ReportStatus;
-  private afterStatus!: ReportStatus;
-  private stepsStatus!: ReportStatus;
+  private elementStatus = new ReportStatus('UNDEFINED');
+  private beforeStatus = new ReportStatus('UNDEFINED');
+  private afterStatus = new ReportStatus('UNDEFINED');
+  private stepsStatus = new ReportStatus('UNDEFINED');
 
   private feature!: IFeatureable;
   private duration: number = 0;
