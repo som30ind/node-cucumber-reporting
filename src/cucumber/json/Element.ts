@@ -28,13 +28,13 @@ export class MElement implements IElementable {
     public readonly steps: MStep[],
     public readonly before: MHook[],
     public readonly after: MHook[],
+    public readonly tags: MTag[],
     public readonly id?: string,
     public readonly name?: string,
     public readonly description?: string,
     public readonly line?: number,
     // start_timestamp
     public readonly startTimestamp?: Date,
-    public readonly tags?: MTag[],
   ) { }
 
   public static fromJson(configuration: Configuration, jsonData: IElement) {
@@ -72,12 +72,12 @@ export class MElement implements IElementable {
       Helper.mapJsonArray(configuration, jsonData.steps, MStep.fromJson),
       Helper.mapJsonArray(configuration, jsonData.before, MHook.fromJson),
       Helper.mapJsonArray(configuration, jsonData.after, MHook.fromJson),
+      Helper.mapJsonArray(configuration, jsonData.tags, MTag.fromJson),
       jsonData.id,
       jsonData.name,
       jsonData.description,
       toInteger(jsonData.line),
       Helper.parseDate(jsonData.start_timestamp),
-      Helper.mapJsonArray(configuration, jsonData.tags, MTag.fromJson),
     );
   }
 
@@ -143,7 +143,7 @@ export class MElement implements IElementable {
 
   private calculateDuration(): void {
     for (const step of this.steps) {
-      this.duration += step.result?.duration ?? 0;
+      this.duration += step.result.duration;
     }
   }
 }

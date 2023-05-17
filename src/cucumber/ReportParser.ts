@@ -73,7 +73,7 @@ export class ReportParser {
 
     return jFeatures.map(jFeature => {
       MFeature
-      const mFeature = MFeature.fromJson(jFeature, this.configuration);
+      const mFeature = MFeature.fromJson(this.configuration, jFeature);
       mFeature.qualifier = this.configuration.qualifiers[jsonFileName] ?? jsonFileName;
 
       return mFeature;

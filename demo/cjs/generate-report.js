@@ -1,10 +1,10 @@
 /**
  * Supports CJS require or ES6 Import.
- * const { ReportBuilder } = require('@som30ind/cucumber-reporting');
+ * import { ReportBuilder } from '@som30ind/cucumber-reporting';
  * 
  * ES6 / TypeScript Import Statement is shown below
  */
-import { ReportBuilder } from '@som30ind/cucumber-reporting';
+const { ReportBuilder } = require('@som30ind/cucumber-reporting');
 
 /**
  * @param jsonFiles {string[]} (Mandetory) Array of Cucumber JSON Files.
@@ -25,7 +25,7 @@ const reportBuilder = new ReportBuilder([
    * 
    * @param reportDir {string}
    */
-  reportDir: './report/cucumber-report-html',
+  reportDir: './report/cucumber-report-html-cjs',
   /**
    * Name of the Project to be dislayed on the Report.
    * 
