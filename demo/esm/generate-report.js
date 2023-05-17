@@ -195,5 +195,8 @@ const reportBuilder = new ReportBuilder([
 const result = reportBuilder.generateReports();
 
 if (result) {
-  console.log(`Report Generated.`);
+  console.log(`ESM: Report Generated.`);
+} else {
+  console.error(`ESM: Report Failed.`);
+  process.exit(1);
 }
