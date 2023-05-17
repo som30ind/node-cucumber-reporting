@@ -1,6 +1,6 @@
 {
   "name": "@som30ind/cucumber-reporting",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -28,7 +28,9 @@
     "NPM",
     "WebDriver.io",
     "WebDriverIO",
-    "WDIO"
+    "WDIO",
+    "Cucumber HTML Report",
+    "Cucumber JSON to HTML Report"
   ],
   "author": "Somnath Sinha <som30ind@gmail.com>",
   "license": "MIT",
