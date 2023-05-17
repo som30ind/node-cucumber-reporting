@@ -21,16 +21,19 @@ function getLatestVersionFromNpm(packageName) {
 async function checkVersionIncrement() {
   try {
     const latestVersion = await getLatestVersionFromNpm(packageName);
-    console.log('Latest version from npmjs.com:', latestVersion);
+    console.log(`Latest version of ${packageName} from npmjs.com: ${latestVersion} & Local: ${packageVersion}`);
 
     if (latestVersion && packageVersion) {
-      if (compareVersions(packageVersion, latestVersion) === -1) {
+      if (compareVersions(packageVersion, latestVersion) === 1) {
         console.log('The version in package.json is incremented.');
-      } else {
-        console.log('The version in package.json is not incremented.');
-        throw new Error('package.json is not incremented with latest version.');
+        return;
       }
+
+      console.log('The version in package.json is not incremented.');
+      throw new Error('package.json is not incremented with latest version.');
     }
+
+    throw new Error('Error fetching latest version.');
   } catch (error) {
     console.error('Error:', error);
     process.exit(1);
