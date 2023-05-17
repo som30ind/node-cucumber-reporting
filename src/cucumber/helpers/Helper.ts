@@ -1,7 +1,7 @@
 import { isValid, parseISO } from 'date-fns';
-import { cloneDeep, isInteger, isObject, isString, mergeWith } from 'lodash';
+import { isInteger, isObject, isString, mergeWith } from 'lodash';
 import { createHash, randomBytes } from 'node:crypto';
-import { Configuration, UserConfiguration } from '../Configuration';
+import { Configuration } from '../Configuration';
 import { IHasContent } from '../json/support/IHasContent';
 import { DurationFormatter } from './DurationFormatter';
 

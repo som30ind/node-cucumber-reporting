@@ -31,7 +31,7 @@ export class MFeature implements IFeatureable {
     public readonly line?: number,
   ) { }
 
-  public static fromJson(jsonData: IFeature, configuration: Configuration) {
+  public static fromJson(configuration: Configuration, jsonData: IFeature) {
     if (!isPlainObject(jsonData)) {
       throw new JsonParseException(JsonParseExceptionCode.INVALID_JSON_INPUT, 'Invalid JSON Input. Feature object expected.');
     }

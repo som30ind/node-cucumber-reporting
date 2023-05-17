@@ -15,3 +15,6 @@
 /*.tgz
 /.github
 /test
+/demo
+/coverage
+/jest.config.ts
