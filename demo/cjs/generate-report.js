@@ -195,5 +195,8 @@ const reportBuilder = new ReportBuilder([
 const result = reportBuilder.generateReports();
 
 if (result) {
-  console.log(`Report Generated.`);
+  console.log(`CJS: Report Generated.`);
+} else {
+  console.error(`CJS: Report Failed.`);
+  process.exit(1);
 }

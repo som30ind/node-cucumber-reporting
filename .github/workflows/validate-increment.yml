@@ -1,9 +1,6 @@
-name: Validate Version Increment
+name: Validate Version Increment CI
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
@@ -14,10 +11,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Validate Version Increment
+
     strategy:
       matrix:
         node-version: [20.x]
+
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
