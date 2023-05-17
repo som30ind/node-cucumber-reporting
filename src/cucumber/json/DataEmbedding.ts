@@ -84,14 +84,14 @@ export class MDataEmbedding {
     }
 
     // remove subtype's parameter (if existing)
-    if (mime.includes(";")) {
+    if (mime.includes(';')) {
       mime = mime.substring(0, mime.indexOf(';'));
     }
 
     // normalise
     mime = mime.toLowerCase().trim();
 
-    switch (this.mimeType) {
+    switch (mime) {
       // image available remotely stored as link/url
       case 'image/url':
         return 'image';

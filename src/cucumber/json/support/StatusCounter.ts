@@ -12,20 +12,28 @@ export class StatusCounter {
   private pFinalStatus: ReportStatus = new ReportStatus('PASSED');
   private pSize = 0;
 
-  constructor(resultsables: Resultsable[] = [], notFailingStatuses: Status[] = []) {
+  constructor(
+    resultsables: Resultsable[] = [],
+    private readonly notFailingStatuses: Status[] = []
+  ) {
     for (const status of allowedStatus) {
       this.counter[status] = 0;
     }
 
     for (const resultsable of resultsables) {
       const status = resultsable.getResult().status;
-
-      if (notFailingStatuses != null && notFailingStatuses.includes(status.value)) {
-        this.incrementFor(new ReportStatus('PASSED'));
-      } else {
-        this.incrementFor(status);
-      }
+      this.incrementFor(status);
     }
+  }
+
+  private validateStatus(status: ReportStatus): ReportStatus {
+    status = status instanceof ReportStatus ? status : new ReportStatus('UNDEFINED');
+
+    if (Array.isArray(this.notFailingStatuses) && this.notFailingStatuses.includes(status.value)) {
+      return new ReportStatus('PASSED');
+    }
+
+    return status;
   }
 
   /**
@@ -53,6 +61,7 @@ export class StatusCounter {
    *            finalStatus for which the counter should be incremented.
    */
   public incrementFor(status: ReportStatus): void {
+    status = this.validateStatus(status);
     const statusCounter: number = this.getValueFor(status.value) + 1;
     this.counter[status.value] = statusCounter;
     this.pSize++;

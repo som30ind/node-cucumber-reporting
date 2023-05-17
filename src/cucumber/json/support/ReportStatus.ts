@@ -1,5 +1,5 @@
 import { capitalize } from 'lodash';
-import { Status } from '../../../types/report.type';
+import { Status, allowedStatus } from '../../../types/report.type';
 
 
 export class ReportStatus {
@@ -11,13 +11,16 @@ export class ReportStatus {
   constructor(
     value: Status
   ) {
-    this.value = ReportStatus.validatedStatus(value);
+    value = ReportStatus.validatedStatus(value);
+    this.value = value;
     this.pLabel = capitalize(value);
     this.pIsPassed = value === 'PASSED';
   }
 
   public static validatedStatus(value: Status): Status {
-    if (ReportStatus.UNKNOWN_STATUSES.includes(value.toUpperCase())) {
+    value = value.toUpperCase() as Status;
+
+    if (ReportStatus.UNKNOWN_STATUSES.includes(value) || !allowedStatus.includes(value)) {
       return 'UNDEFINED';
     }
 

@@ -21,8 +21,8 @@ export class StepHelper {
         continue;
       }
 
-      const start = arg.offset ?? 0;
-      const end = start + (arg.val ?? '').length - 1;
+      const start = arg.offset as number;
+      const end = start + (arg.val as string).length - 1;
 
       chars[start] = preArgument + chars[start];
       chars[end] = chars[end] + postArgument;

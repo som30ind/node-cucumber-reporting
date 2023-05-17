@@ -25,7 +25,7 @@ const reportBuilder = new ReportBuilder([
    * 
    * @param reportDir {string}
    */
-  reportDir: './report/cucumber-report-html',
+  reportDir: './report/cucumber-report-html-esm',
   /**
    * Name of the Project to be dislayed on the Report.
    * 
@@ -195,5 +195,8 @@ const reportBuilder = new ReportBuilder([
 const result = reportBuilder.generateReports();
 
 if (result) {
-  console.log(`Report Generated.`);
+  console.log(`ESM: Report Generated.`);
+} else {
+  console.error(`ESM: Report Failed.`);
+  process.exit(1);
 }

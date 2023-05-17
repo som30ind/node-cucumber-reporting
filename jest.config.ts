@@ -31,7 +31,9 @@ export default {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "<rootDir>/src/test-helpers/test.helper.ts"
+    "<rootDir>/src/test-helpers/test.helper.ts",
+    "<rootDir>/src/test.ts",
+    "<rootDir>/src/index.ts",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -129,7 +131,7 @@ export default {
 
   // A list of paths to directories that Jest should use to search for files in
   roots: [
-    "src"
+    "src",
   ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
@@ -158,8 +160,9 @@ export default {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/__tests__/**/*.[jt]s?(x)",
+    // "**/__tests__/**/*.[jt]s?(x)",
     "**/*.spec.ts",
+    // "**/test.ts"
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
