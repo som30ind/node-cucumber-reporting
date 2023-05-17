@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "For Generate and Publish Github Page",
   "scripts": {
-    "build:report": "node generate-report.js"
+    "build:report:esm": "node esm/generate-report.js",
+    "build:report:cjs": "node cjs/generate-report.js"
   },
   "dependencies": {
-    "@som30ind/cucumber-reporting": "file:lib/cucumber-reporting.tgz"
+    "@som30ind/cucumber-reporting": "file:lib/som30ind-cucumber-reporting.tgz"
   },
-  "type": "module",
   "keywords": [],
   "author": "Somnath Sinha",
   "license": "MIT"
